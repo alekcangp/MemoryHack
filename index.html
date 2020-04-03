@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Дорога памяти</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/btns.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+  </head>
+
+  <body>
+   
+    <a id="mplogs" href="https://foto.pamyat-naroda.ru/" style = "text-decoration: none; color:aliceblue">
+      Memory.Hack.
+    </a>
+     <h2 class="page-header">ДОРОГА ПАМЯТИ 43 Live <span style = "color:red;">&#9673;</span></h2>
+      <br>
+      <div>
+     <canvas id="mpcanvas"></canvas>
+        <!--   <video id="video" controls autoplay loop style="display:none;">
+            <source src="" type="video/mp4">
+        </video>-->
+        
+      </div>
+      <div id="mplogs">
+       
+        <div class="emscripten" id="status"></div>
+        <div class="emscripten">
+          <progress value="0" max="100" id="progress" hidden=1></progress>
+        </div>
+      </div>      
+      
+      <br>
+           <div id="tabs-1">
+            
+                <div id="avatar">
+                 
+                    <label class="btn btn-default btn-file" id="lblfilesavtr">
+                        Загрузить портрет... <input type="file" id="filesavtr" style="display: none;" accept="image/jpg,image/jpeg,image/png">
+                   </label>
+                   <label class="btn btn-default btn-file" id="record">
+                    Сохранить портрет... <input id="rec" style="display: none;" onclick = "record()">
+                  </label>
+              
+                   <div class="loadingbar">
+                      <div class="bar" id="loadingbar">
+                        <i class="sphere"></i>
+                      </div>
+                    </div>
+                </div>
+              
+            </div>
+			 
+      <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script type="text/javascript" src="./sample/mpavatar/js/mp_config.js"></script>
+      <script type="text/javascript" src="./sample/mpavatar/js/mp_fileio.js"></script>
+   
+      <script type="text/javascript" src="./js/mplib.js"></script>
+      <script type="text/javascript" src="./sample/mpavatar/js/mp_demo.js"></script>
+        
+     
+      <script type="text/javascript" src="./sample/mpavatar/js/resizecanvas.js"></script>
+      <script type="text/javascript" src="./js/CanvasRecorder.js"></script>
+      
+      <script>
+        function record() {
+          const canvas = document.getElementById('mpcanvas');
+          const recorder = new CanvasRecorder(canvas);
+          recorder.start(); 
+          onloading();
+          setTimeout(function (){
+            recorder.stop();
+            recorder.save('LivePhoto.webm');
+            offloading();
+          }, 6000)
+          
+        }
+      </script>
+  </body>
+</html>
